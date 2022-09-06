@@ -1,17 +1,35 @@
-import { css } from "@emotion/css";
-import { useTheme } from "@emotion/react";
-import { ButtonUnstyled } from "@mui/base";
-import appTheme from "./App.theme";
-import { GlobalTheme } from "./globalTheme";
+import { AppBar, Box, Button, Typography, useTheme } from "@mui/material";
+import appTheme from "App.style";
 
 function App() {
-  const theme = useTheme() as GlobalTheme;
+  const theme = useTheme();
   const styles = appTheme(theme);
   return (
-    <div className={css(styles.container)}>
-      <header className={css(styles.header)}>Why is my app so slow?</header>
-      <ButtonUnstyled className={css(styles.button)}>Let's find out!</ButtonUnstyled>
-    </div>
+    <Box sx={styles.page}>
+      <Box sx={styles.appBar}>
+        <AppBar position="static">
+          <Typography
+            variant="h3"
+            component={"div"}
+            sx={styles.header}
+            fontWeight="bold"
+          >
+            Why is my app so slow?
+          </Typography>
+        </AppBar>
+      </Box>
+      <Box sx={styles.button}>
+        <Button variant="contained" color={"secondary"}>
+          <Typography
+            variant="button"
+            fontWeight={"bold"}
+            fontSize={"2em"}
+          >
+            Let's find out!
+          </Typography>
+        </Button>
+      </Box>
+    </Box>
   );
 }
 
